@@ -1,0 +1,17 @@
+[data-md-color-scheme="asu"] {
+    --md-primary-fg-color:        #8c1d40;
+    --md-typeset-a-color:   #8c1d40;
+  }
+
+  [data-md-color-scheme="slate"] {
+    --md-primary-fg-color:  #8c1d40;
+    --md-typeset-a-color:   #FFC627;
+  }
+
+  .md-content p {
+    text-align: justify;
+  }
+
+  /* ASU Yellow:    #FFC627 */
+  /* ASU Red:       #8c1d40 */
+  /* ASU Black:     #333333 */

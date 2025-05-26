@@ -1,0 +1,48 @@
+site_name: R-Visor Documentation
+dev_addr: 0.0.0.0:8080
+theme:
+  name: material
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: asu
+      primary: custom
+      toggle: 
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.footer
+    - content.code.copy
+  font:
+    text: Google Sans
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/stamcenter
+repo_url: https://github.com/stamcenter/r-visor
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+plugins:
+  - tags
+  - search
+  - awesome-nav
