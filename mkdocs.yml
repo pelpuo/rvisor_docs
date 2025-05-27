@@ -30,6 +30,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/stamcenter
+  generator: false
 repo_url: https://github.com/stamcenter/r-visor
 extra_css:
   - stylesheets/extra.css
@@ -46,3 +47,4 @@ plugins:
   - tags
   - search
   - awesome-nav
+

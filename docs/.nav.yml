@@ -1,6 +1,25 @@
 nav:
   - index.md
-  - installation.md
-  - design
-  - tutorials
-  - API
+  - Installation:
+    - installation.md
+  - Design:
+    - design/architecture.md
+    - design/ArchVisor.md
+    - design/instrumentation_granularity.md
+    - design/routine_placement.md
+    - design/trace_linking.md
+    - design/stub_regions.md
+    - design/inlining.md
+  - Tutorials:
+    - tutorials/basic_example.md
+    - tutorials/inline_routine.md
+    - tutorials/advanced_example.md
+  - API:
+    - API/r_visor.md
+    - API/decoder.md
+    - API/encoder.md
+    - API/railInst.md
+    - API/railbasicblock.md
+    - API/print_utils.md
+    - API/elf_reader.md
+    - API/code_cache.md

@@ -182,7 +182,8 @@ To measure the impact of trace linking, we will create a new C file, `routines/n
 After comparing the results from `no_instrumentation_logs.txt` and `no_instrumentation_tl_logs.txt`, it is evident that there can be a very large improvement in the cycle and instruction count (e.g., ~85% reduction in the example numbers) when trace linking is enabled for scenarios with minimal R-Visor intervention.
 
 ## Conclusion
-Although we have demonstrated that trace linking significantly improves the computation performance of a binary being instrumented (when no frequent C routines are called), this was shown without complex instrumentation routines present at high frequency (e.g., per basic block). By default, if C-based instrumentation routines are registered to run at every basic block or instruction, they require a context switch to R-Visor. Thus, the benefits of using trace linking would be diminished in such cases[cite: 220]. To overcome this and maintain performance even with frequent, short instrumentation tasks, R-Visor implements another optimization called [routine inlining](../inlining).
+Although we have demonstrated that trace linking significantly improves the computation performance of a binary being instrumented (when no frequent C routines are called), this was shown without complex instrumentation routines present at high frequency (e.g., per basic block). By default, if C-based instrumentation routines are registered to run at every basic block or instruction, they require a context switch to R-Visor. Thus, the benefits of using trace linking would be diminished in such cases. To overcome this and maintain performance even with frequent, short instrumentation tasks, R-Visor implements another optimization called [routine inlining](../inlining).
 
 <br><br>
-```
+
+

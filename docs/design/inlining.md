@@ -1,7 +1,7 @@
 # Routine Inlining
 
 ## Description
-While trace linking reduces the intervention of R-Visor during execution, its advantage can be negated when C/C++ instrumentation routines are present, as one of the dispatcher's tasks is to execute these routines at predetermined points, often involving context switches[cite: 220]. To maintain the performance benefits of trace linking, R-Visor's API allows for the insertion of instrumentation routines directly into the basic block in the code cache during its allocation phase. We dub this feature *routine inlining*.
+While trace linking reduces the intervention of R-Visor during execution, its advantage can be negated when C/C++ instrumentation routines are present, as one of the dispatcher's tasks is to execute these routines at predetermined points, often involving context switches. To maintain the performance benefits of trace linking, R-Visor's API allows for the insertion of instrumentation routines directly into the basic block in the code cache during its allocation phase. We dub this feature *routine inlining*.
 
 Our version of routine inlining allows users to write short snippets in RISC-V assembly with the aid of R-Visor's built-in encoder. This gives users low-level control over the instrumentation routines being executed. We recommend routine inlining for short, performance-critical instrumentation routines and for users proficient in RISC-V assembly.
 
@@ -87,7 +87,7 @@ ADDI t5, t5, 1
 SD t5, 0(t6)
 ```
 
-However, the registers `t5` and `t6` are general-purpose temporary registers that the instrumented binary might also be using. To avoid corrupting the binary's state (a key principle of transparent instrumentation [cite: 54, 141]), we must save their original values before using them and restore them after our routine completes. We can use the stack for this:
+However, the registers `t5` and `t6` are general-purpose temporary registers that the instrumented binary might also be using. To avoid corrupting the binary's state (a key principle of transparent instrumentation), we must save their original values before using them and restore them after our routine completes. We can use the stack for this:
 
 ```assembly
 # Save original values of t6 and t5

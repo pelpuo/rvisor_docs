@@ -11,18 +11,12 @@ typedef enum {
     BRANCH,             // Basic block ends with a conditional branch instruction
     DIRECT_JUMP,        // Basic block ends with a direct jump (e.g., JAL with known offset)
     INDIRECT_JUMP,      // Basic block ends with an indirect jump (e.g., JALR to a register value)
-    FUNCTION_CALL,      // Basic block ends with an instruction recognized as a function call (e.g., JAL/JALR to a function)
-    FUNCTION_RETURN,    // Basic block ends with a function return instruction (e.g., JALR x0, 0(ra))
-    SYSCALL,            // Basic block ends with a system call instruction (e.g., ECALL)
     SEGMENTED           // Basic block was segmented due to reasons other than a control flow instruction (e.g., max size, instrumentation point)
 } rvisor_bb_type;
 ```
 * **`BRANCH`**: The basic block terminates with a conditional branch. Its execution may lead to a "taken" path or a "fall-through" path.
 * **`DIRECT_JUMP`**: The basic block terminates with a jump instruction where the target address can be determined statically.
 * **`INDIRECT_JUMP`**: The basic block terminates with a jump instruction where the target address is determined at runtime (e.g., from a register).
-* **`FUNCTION_CALL`**: The basic block terminates with an instruction identified as a direct or indirect function call.
-* **`FUNCTION_RETURN`**: The basic block terminates with an instruction identified as a function return.
-* **`SYSCALL`**: The basic block terminates with a system call instruction.
 * **`SEGMENTED`**: The basic block was ended by R-Visor for reasons other than encountering a typical control-flow terminating instruction. This could be due to reaching a maximum block size, an explicit instrumentation point, or other internal R-Visor logic.
 
 ---
@@ -32,15 +26,12 @@ typedef enum {
 An array of strings corresponding to the `rvisor_bb_type` enum values, intended for converting the enum to a human-readable string.
 ```c
 static const char *basic_block_type_str[6] = {
-        "Indirect Branch", 
-        "Direct Branch",
-        "Function Call",     
-        "Function Return",
-        "Syscall",
+        "Branch", 
+        "Direct Jump", 
+        "Indirect Jump",
         "Segmented Block"
         };
 ```
-* **Note**: The array size is 6, but the `rvisor_bb_type` enum has 7 values. The string for `BRANCH` appears to be missing, or "Direct Branch" might be intended to cover general branches, with "Indirect Branch" covering indirect jumps. Based on the order, it seems `basic_block_type_str[0]` maps to `INDIRECT_JUMP`, `[1]` to `DIRECT_JUMP`, and so on. The mapping should be used cautiously if `rvisor_bb_type` is used directly as an index.
 
 ---
 ## Structs

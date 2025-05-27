@@ -34,7 +34,7 @@ int *basicBlockTimePost;
 int *basicBlockTimePre;
 int t_delta;
 
-#define CACHE_SIZE (4 * 1024 * 1024) // Referenced in paper, but not directly used in this snippet [cite: 232]
+#define CACHE_SIZE (4 * 1024 * 1024) // Referenced in paper, but not directly used in this snippet
 
 rvisor_vec bb_name;   // Vector to store basic block starting addresses
 rvisor_vec bb_timing; // Vector to store corresponding execution times
@@ -80,7 +80,7 @@ int main(int argc, char **argv, char **envp) {
   fprintf( rvisor_logger, "bb_address,time_cycles\n"); // CSV Header
 
   // --- R-Visor Initialization ---
-  rvisor_init(argv[1]); // Initialize R-Visor with the target binary [cite: 231]
+  rvisor_init(argv[1]); // Initialize R-Visor with the target binary 
 
   // --- Memory Allocation for Timestamps ---
   // Allocate space in R-Visor's managed memory for pre-execution timestamp
@@ -93,7 +93,7 @@ int main(int argc, char **argv, char **envp) {
   *basicBlockTimePost = 0; // Initialize
   rvisor_memory_index +=4;
 
-  rvisor_register_args(argc, argv, envp); // Pass arguments to R-Visor [cite: 231]
+  rvisor_register_args(argc, argv, envp); // Pass arguments to R-Visor
 
   // --- Inlined Instructions to Capture PRE-BasicBlock Timestamp ---
   // These instructions are intended to run before the original basic block's instructions.
@@ -129,12 +129,12 @@ int main(int argc, char **argv, char **envp) {
   
   // --- Register Instrumentation Routines ---
   // Register 'bb_time' to be called AFTER every basic block, during RUNTIME.
-  rvisor_register_bb_routine(bb_time, POST, RUNTIME); [cite: 229]
+  rvisor_register_bb_routine(bb_time, POST, RUNTIME); 
   // Register 'exitFxn' to be called when the program finishes.
-  rvisor_register_exit_routine(exitFxn); [cite: 241]
+  rvisor_register_exit_routine(exitFxn); 
 
   // --- Start Execution ---
-  rvisor_run(); [cite: 232]
+  rvisor_run(); 
 }
 
 ```

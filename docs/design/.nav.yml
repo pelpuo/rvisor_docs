@@ -1,6 +1,0 @@
-nav:
-  - architecture.md
-  - ArchVisor.md
-  - trace_linking.md
-  - inlining.md
-  - stub_regions.md
